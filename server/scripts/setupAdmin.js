@@ -22,10 +22,13 @@ const setupAdmin = async () => {
     console.log('✅ [Setup Admin]: Connected to MongoDB.');
 
     const cleanEmail = adminEmail.toLowerCase().trim();
-    const existingAdmin = await Admin.findOne({ email: cleanEmail });
+    const existingAdmin = await Admin.findOne();
 
     if (existingAdmin) {
-      console.log(`ℹ️ [Setup Admin]: Admin account already exists for ${cleanEmail}. Skipping creation.`);
+      existingAdmin.email = cleanEmail;
+      existingAdmin.password = adminPassword;
+      await existingAdmin.save();
+      console.log(`✅ [Setup Admin]: Admin account updated successfully for ${cleanEmail}.`);
     } else {
       await Admin.create({
         email: cleanEmail,
