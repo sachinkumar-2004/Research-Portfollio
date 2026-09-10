@@ -13,7 +13,7 @@ const setupAdmin = async () => {
   }
 
   if (!adminEmail || !adminPassword) {
-    console.error('❌ [Setup Admin]: ADMIN_EMAIL and ADMIN_PASSWORD must be defined in your .env file.');
+    console.error('❌ [Setup Admin]: ADMIN_EMAIL and ADMIN_PASSWORD must be defined in your environment.');
     process.exit(1);
   }
 
@@ -22,20 +22,43 @@ const setupAdmin = async () => {
     console.log('✅ [Setup Admin]: Connected to MongoDB.');
 
     const cleanEmail = adminEmail.toLowerCase().trim();
-    const existingAdmin = await Admin.findOne();
 
-    if (existingAdmin) {
-      existingAdmin.email = cleanEmail;
-      existingAdmin.password = adminPassword;
-      await existingAdmin.save();
-      console.log(`✅ [Setup Admin]: Admin account updated successfully for ${cleanEmail}.`);
+    // 1. Check if an admin with the exact target email exists
+    let targetAdmin = await Admin.findOne({ email: cleanEmail });
+
+    if (targetAdmin) {
+      // Admin with target email exists -> update password
+      targetAdmin.password = adminPassword;
+      await targetAdmin.save();
+      console.log(`✅ [Setup Admin]: Admin password updated successfully for ${cleanEmail}.`);
     } else {
-      await Admin.create({
-        email: cleanEmail,
-        password: adminPassword
-      });
-      console.log(`✅ [Setup Admin]: Admin account created successfully for ${cleanEmail}.`);
+      // Admin with target email does not exist -> check if another admin document exists
+      const existingAdmin = await Admin.findOne();
+      if (existingAdmin) {
+        existingAdmin.email = cleanEmail;
+        existingAdmin.password = adminPassword;
+        await existingAdmin.save();
+        targetAdmin = existingAdmin;
+        console.log(`✅ [Setup Admin]: Existing admin updated to ${cleanEmail}.`);
+      } else {
+        // No admin exists at all -> create new
+        targetAdmin = await Admin.create({
+          email: cleanEmail,
+          password: adminPassword
+        });
+        console.log(`✅ [Setup Admin]: New admin created for ${cleanEmail}.`);
+      }
     }
+
+    // 2. Delete every other Admin document to strictly enforce single-admin cardinality
+    const deleteResult = await Admin.deleteMany({ _id: { $ne: targetAdmin._id } });
+    if (deleteResult.deletedCount > 0) {
+      console.log(`🧹 [Setup Admin]: Removed ${deleteResult.deletedCount} duplicate/legacy admin account(s).`);
+    }
+
+    // 3. Confirm final count is strictly 1
+    const totalAdmins = await Admin.countDocuments();
+    console.log(`🔒 [Setup Admin]: Single-admin cardinality verified. Total admin accounts: ${totalAdmins}.`);
 
     await mongoose.disconnect();
     console.log('🔒 [Setup Admin]: Disconnected cleanly from database.');
