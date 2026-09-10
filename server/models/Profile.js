@@ -70,6 +70,11 @@ const profileSchema = new mongoose.Schema(
     cvUrl: {
       type: String,
       trim: true
+    },
+    orcid: {
+      type: String,
+      trim: true,
+      default: ''
     }
   },
   {

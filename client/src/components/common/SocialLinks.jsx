@@ -6,7 +6,7 @@ import {
   Globe,
   BookOpen
 } from 'lucide-react';
-import { LinkedinIcon, ResearchGateIcon } from './Icons';
+import { LinkedinIcon, ResearchGateIcon, OrcidIcon } from './Icons';
 
 export default function SocialLinks({ profile, size = 'md', className = '' }) {
   if (!profile) return null;
@@ -25,6 +25,12 @@ export default function SocialLinks({ profile, size = 'md', className = '' }) {
       url: profile.googleScholarUrl,
       icon: GraduationCap,
       color: 'hover:text-blue-600 dark:hover:text-blue-400',
+    },
+    {
+      label: 'ORCID',
+      url: profile.orcid,
+      icon: OrcidIcon,
+      color: 'hover:text-emerald-600 dark:hover:text-emerald-400',
     },
     {
       label: 'ResearchGate',

@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import SectionHeading from '../components/common/SectionHeading';
 import SocialLinks from '../components/common/SocialLinks';
 import { Mail, Building, MapPin, Globe, GraduationCap } from 'lucide-react';
-import { LinkedinIcon, ResearchGateIcon } from '../components/common/Icons';
+import { LinkedinIcon, ResearchGateIcon, OrcidIcon } from '../components/common/Icons';
 
 export default function ContactPage() {
   const { profile, profileLoading } = useOutletContext();
@@ -149,6 +149,23 @@ export default function ContactPage() {
                   <GraduationCap className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                   <span className="font-semibold text-slate-800 dark:text-slate-200">
                     Google Scholar Profile
+                  </span>
+                </div>
+                <span className="text-slate-400 text-xs">Visit ↗</span>
+              </a>
+            )}
+
+            {profile?.orcid && (
+              <a
+                href={profile.orcid}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-emerald-400 dark:hover:border-emerald-700 hover:bg-emerald-50/40 dark:hover:bg-emerald-950/20 transition-all text-xs sm:text-sm"
+              >
+                <div className="flex items-center gap-3">
+                  <OrcidIcon className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                  <span className="font-semibold text-slate-800 dark:text-slate-200">
+                    ORCID Profile
                   </span>
                 </div>
                 <span className="text-slate-400 text-xs">Visit ↗</span>
