@@ -15,7 +15,7 @@ export default function AwardsPage() {
   useEffect(() => {
     document.title = profile?.name
       ? `Awards & Fellowships | ${profile.name}`
-      : 'Awards & Fellowships | Academic Portfolio';
+      : 'Awards & Fellowships | Swayang Priya Mahanta';
 
     const fetchAwards = async () => {
       try {

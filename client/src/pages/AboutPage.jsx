@@ -15,7 +15,7 @@ export default function AboutPage() {
   useEffect(() => {
     document.title = profile?.name
       ? `About & Academic Journey | ${profile.name}`
-      : 'About & Academic Journey | Academic Portfolio';
+      : 'About & Academic Journey | Swayang Priya Mahanta';
 
     const fetchEducation = async () => {
       try {

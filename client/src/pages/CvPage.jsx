@@ -10,7 +10,7 @@ export default function CvPage() {
   useEffect(() => {
     document.title = profile?.name
       ? `Curriculum Vitae | ${profile.name}`
-      : 'Curriculum Vitae | Academic Portfolio';
+      : 'Curriculum Vitae | Swayang Priya Mahanta';
   }, [profile]);
 
   const cvUrl = profile?.cvUrl;

@@ -15,7 +15,7 @@ export default function ResearchPage() {
   useEffect(() => {
     document.title = profile?.name
       ? `Research Areas & Projects | ${profile.name}`
-      : 'Research Areas & Projects | Academic Portfolio';
+      : 'Research Areas & Projects | Swayang Priya Mahanta';
 
     const fetchResearch = async () => {
       try {

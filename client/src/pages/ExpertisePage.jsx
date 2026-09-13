@@ -16,7 +16,7 @@ export default function ExpertisePage() {
   useEffect(() => {
     document.title = profile?.name
       ? `Expertise & Instrumentation | ${profile.name}`
-      : 'Expertise & Instrumentation | Academic Portfolio';
+      : 'Expertise & Instrumentation | Swayang Priya Mahanta';
 
     const fetchExpertise = async () => {
       try {

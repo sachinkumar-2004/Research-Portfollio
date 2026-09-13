@@ -20,7 +20,7 @@ export default function PublicationsPage() {
   useEffect(() => {
     document.title = profile?.name
       ? `Publications & Scholarship | ${profile.name}`
-      : 'Publications & Scholarship | Academic Portfolio';
+      : 'Publications & Scholarship | Swayang Priya Mahanta';
 
     const fetchPublications = async () => {
       try {

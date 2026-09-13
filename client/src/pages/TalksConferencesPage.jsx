@@ -17,7 +17,7 @@ export default function TalksConferencesPage() {
   useEffect(() => {
     document.title = profile?.name
       ? `Talks & Conferences | ${profile.name}`
-      : 'Talks & Conferences | Academic Portfolio';
+      : 'Talks & Conferences | Swayang Priya Mahanta';
 
     const fetchData = async () => {
       try {

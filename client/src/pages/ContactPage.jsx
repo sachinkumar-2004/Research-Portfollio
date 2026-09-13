@@ -11,7 +11,7 @@ export default function ContactPage() {
   useEffect(() => {
     document.title = profile?.name
       ? `Contact & Academic Inquiries | ${profile.name}`
-      : 'Contact & Academic Inquiries | Academic Portfolio';
+      : 'Contact & Academic Inquiries | Swayang Priya Mahanta';
   }, [profile]);
 
   const email = profile?.email;

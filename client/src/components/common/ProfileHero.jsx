@@ -32,9 +32,9 @@ export default function ProfileHero({ profile, loading = false }) {
     );
   }
 
-  const name = profile?.name || '';
-  const designation = profile?.designation || '';
-  const institution = profile?.institution || '';
+  const name = profile?.name || 'Swayang Priya Mahanta';
+  const designation = profile?.designation || 'NISER Research Scholar';
+  const institution = profile?.institution || 'National Institute of Science Education and Research (NISER)';
   const bio = profile?.shortBio || '';
 
   return (

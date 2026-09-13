@@ -18,7 +18,7 @@ export default function GalleryPage() {
   useEffect(() => {
     document.title = profile?.name
       ? `Academic & Research Gallery | ${profile.name}`
-      : 'Academic & Research Gallery | Academic Portfolio';
+      : 'Academic & Research Gallery | Swayang Priya Mahanta';
 
     const fetchGallery = async () => {
       try {

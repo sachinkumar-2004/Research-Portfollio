@@ -24,8 +24,8 @@ export default function HomePage() {
 
   useEffect(() => {
     document.title = profile?.name
-      ? `${profile.name} | Academic Portfolio`
-      : 'Academic Portfolio';
+      ? `${profile.name} | NISER Research Scholar`
+      : 'Swayang Priya Mahanta | NISER Research Scholar';
 
     const fetchHomeData = async () => {
       try {

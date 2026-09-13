@@ -16,7 +16,7 @@ export default function ExperiencePage() {
   useEffect(() => {
     document.title = profile?.name
       ? `Education & Experience | ${profile.name}`
-      : 'Education & Experience | Academic Portfolio';
+      : 'Education & Experience | Swayang Priya Mahanta';
 
     const fetchData = async () => {
       try {
