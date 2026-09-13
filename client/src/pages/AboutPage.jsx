@@ -5,7 +5,7 @@ import Timeline from '../components/cards/Timeline';
 import LoadingState from '../components/common/LoadingState';
 import EmptyState from '../components/common/EmptyState';
 import portfolioService from '../api/portfolioService';
-import { Building, MapPin, Mail, GraduationCap } from 'lucide-react';
+import { Building, MapPin, Mail, GraduationCap, Phone } from 'lucide-react';
 
 export default function AboutPage() {
   const { profile, profileLoading } = useOutletContext();
@@ -190,6 +190,21 @@ export default function AboutPage() {
                     >
                       <Mail className="w-4 h-4 shrink-0" />
                       {profile.email}
+                    </a>
+                  </div>
+                )}
+
+                {profile?.phone && (
+                  <div>
+                    <span className="text-slate-500 dark:text-slate-400 block text-xs">
+                      Mobile Number
+                    </span>
+                    <a
+                      href={`tel:${profile.phone.replace(/\s+/g, '')}`}
+                      className="font-medium text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1.5 mt-0.5"
+                    >
+                      <Phone className="w-4 h-4 shrink-0" />
+                      {profile.phone}
                     </a>
                   </div>
                 )}

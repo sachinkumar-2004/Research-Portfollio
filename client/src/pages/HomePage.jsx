@@ -4,18 +4,20 @@ import ProfileHero from '../components/common/ProfileHero';
 import SectionHeading from '../components/common/SectionHeading';
 import ResearchCard from '../components/cards/ResearchCard';
 import PublicationCard from '../components/cards/PublicationCard';
+import ExpertiseCard from '../components/cards/ExpertiseCard';
 import TalkCard from '../components/cards/TalkCard';
 import AwardCard from '../components/cards/AwardCard';
 import LoadingState from '../components/common/LoadingState';
 import EmptyState from '../components/common/EmptyState';
 import ErrorState from '../components/common/ErrorState';
 import portfolioService from '../api/portfolioService';
-import { Microscope, BookOpen, Mic, Award, Mail, ArrowRight } from 'lucide-react';
+import { Microscope, BookOpen, Cpu, Mic, Award, Mail, ArrowRight } from 'lucide-react';
 
 export default function HomePage() {
   const { profile, profileLoading, profileError } = useOutletContext();
   const [research, setResearch] = useState([]);
   const [publications, setPublications] = useState([]);
+  const [expertise, setExpertise] = useState([]);
   const [talks, setTalks] = useState([]);
   const [awards, setAwards] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,9 +29,10 @@ export default function HomePage() {
 
     const fetchHomeData = async () => {
       try {
-        const [resResearch, resPubs, resTalks, resAwards] = await Promise.allSettled([
+        const [resResearch, resPubs, resExpertise, resTalks, resAwards] = await Promise.allSettled([
           portfolioService.getResearch(),
           portfolioService.getPublications(),
+          portfolioService.getExpertise(),
           portfolioService.getTalks(),
           portfolioService.getAwards(),
         ]);
@@ -42,6 +45,11 @@ export default function HomePage() {
           const pubs = resPubs.value.data;
           const featured = pubs.filter((p) => p.featured);
           setPublications(featured.length > 0 ? featured.slice(0, 3) : pubs.slice(0, 3));
+        }
+        if (resExpertise.status === 'fulfilled' && resExpertise.value.data) {
+          const items = resExpertise.value.data;
+          const featured = items.filter((e) => e.featured);
+          setExpertise(featured.length > 0 ? featured.slice(0, 3) : items.slice(0, 3));
         }
         if (resTalks.status === 'fulfilled' && resTalks.value.data) {
           setTalks(resTalks.value.data.slice(0, 2));
@@ -143,6 +151,24 @@ export default function HomePage() {
           />
         )}
       </section>
+
+      {/* 4. Expertise & Instrumentation Preview */}
+      {expertise.length > 0 && (
+        <section>
+          <SectionHeading
+            badge="Capability & Apparatus"
+            title="Expertise & Instrumentation"
+            subtitle="Core experimental techniques, specialized instrumentation, and laboratory capabilities."
+            actionText="View All Expertise"
+            actionHref="/expertise"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {expertise.map((item) => (
+              <ExpertiseCard key={item._id} item={item} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* 4. Recent Talks & Conferences */}
       <section>

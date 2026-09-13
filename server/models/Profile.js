@@ -75,6 +75,11 @@ const profileSchema = new mongoose.Schema(
       type: String,
       trim: true,
       default: ''
+    },
+    phone: {
+      type: String,
+      trim: true,
+      default: ''
     }
   },
   {

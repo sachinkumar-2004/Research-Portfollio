@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ResearchPage from './pages/ResearchPage';
 import PublicationsPage from './pages/PublicationsPage';
+import ExpertisePage from './pages/ExpertisePage';
 import TalksConferencesPage from './pages/TalksConferencesPage';
 import AwardsPage from './pages/AwardsPage';
 import ExperiencePage from './pages/ExperiencePage';
@@ -27,6 +28,7 @@ import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import AdminProfilePage from './pages/admin/AdminProfilePage';
 import AdminResearchPage from './pages/admin/AdminResearchPage';
 import AdminPublicationsPage from './pages/admin/AdminPublicationsPage';
+import AdminExpertisePage from './pages/admin/AdminExpertisePage';
 import AdminTalksPage from './pages/admin/AdminTalksPage';
 import AdminConferencesPage from './pages/admin/AdminConferencesPage';
 import AdminAwardsPage from './pages/admin/AdminAwardsPage';
@@ -47,6 +49,7 @@ export default function App() {
               <Route path="about" element={<AboutPage />} />
               <Route path="research" element={<ResearchPage />} />
               <Route path="publications" element={<PublicationsPage />} />
+              <Route path="expertise" element={<ExpertisePage />} />
               <Route path="talks" element={<TalksConferencesPage />} />
               <Route path="conferences" element={<Navigate to="/talks" replace />} />
               <Route path="awards" element={<AwardsPage />} />
@@ -73,6 +76,7 @@ export default function App() {
               <Route path="profile" element={<AdminProfilePage />} />
               <Route path="research" element={<AdminResearchPage />} />
               <Route path="publications" element={<AdminPublicationsPage />} />
+              <Route path="expertise" element={<AdminExpertisePage />} />
               <Route path="talks" element={<AdminTalksPage />} />
               <Route path="conferences" element={<AdminConferencesPage />} />
               <Route path="awards" element={<AdminAwardsPage />} />

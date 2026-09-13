@@ -8,6 +8,7 @@ const Award = require('./Award');
 const Education = require('./Education');
 const Experience = require('./Experience');
 const Gallery = require('./Gallery');
+const Expertise = require('./Expertise');
 
 module.exports = {
   Admin,
@@ -19,5 +20,6 @@ module.exports = {
   Award,
   Education,
   Experience,
-  Gallery
+  Gallery,
+  Expertise
 };

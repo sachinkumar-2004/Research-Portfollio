@@ -7,6 +7,7 @@ import {
   User,
   Microscope,
   BookOpen,
+  Cpu,
   Mic,
   Presentation,
   Award,
@@ -24,6 +25,7 @@ export default function AdminDashboardPage() {
     profile: null,
     research: 0,
     publications: 0,
+    expertise: 0,
     talks: 0,
     conferences: 0,
     awards: 0,
@@ -42,6 +44,7 @@ export default function AdminDashboardPage() {
           resProfile,
           resResearch,
           resPubs,
+          resExpertise,
           resTalks,
           resConfs,
           resAwards,
@@ -52,6 +55,7 @@ export default function AdminDashboardPage() {
           portfolioService.getProfile(),
           portfolioService.getResearch(),
           portfolioService.getPublications(),
+          portfolioService.getExpertise(),
           portfolioService.getTalks(),
           portfolioService.getConferences(),
           portfolioService.getAwards(),
@@ -64,6 +68,7 @@ export default function AdminDashboardPage() {
           profile: resProfile.status === 'fulfilled' && resProfile.value.data ? resProfile.value.data : null,
           research: resResearch.status === 'fulfilled' && Array.isArray(resResearch.value.data) ? resResearch.value.data.length : 0,
           publications: resPubs.status === 'fulfilled' && Array.isArray(resPubs.value.data) ? resPubs.value.data.length : 0,
+          expertise: resExpertise.status === 'fulfilled' && Array.isArray(resExpertise.value.data) ? resExpertise.value.data.length : 0,
           talks: resTalks.status === 'fulfilled' && Array.isArray(resTalks.value.data) ? resTalks.value.data.length : 0,
           conferences: resConfs.status === 'fulfilled' && Array.isArray(resConfs.value.data) ? resConfs.value.data.length : 0,
           awards: resAwards.status === 'fulfilled' && Array.isArray(resAwards.value.data) ? resAwards.value.data.length : 0,
@@ -142,6 +147,15 @@ export default function AdminDashboardPage() {
             description="Journal papers, conference proceedings, preprints, and book chapters."
             icon={BookOpen}
             color="purple"
+          />
+
+          <DashboardCard
+            title="Expertise & Tools"
+            count={counts.expertise}
+            countLabel="items"
+            description="Laboratory instrumentation, experimental apparatus, and specialized workflows."
+            icon={Cpu}
+            color="teal"
           />
 
           <DashboardCard

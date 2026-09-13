@@ -19,6 +19,7 @@ import {
   Plus,
   X,
   ExternalLink,
+  Phone,
   Image as ImageIcon
 } from 'lucide-react';
 import { LinkedinIcon, ResearchGateIcon, OrcidIcon } from '../../components/common/Icons';
@@ -36,6 +37,7 @@ export default function AdminProfilePage() {
     profileImage: '',
     researchInterests: [],
     email: '',
+    phone: '',
     googleScholarUrl: '',
     orcid: '',
     researchGateUrl: '',
@@ -73,6 +75,7 @@ export default function AdminProfilePage() {
             ? res.data.researchInterests
             : [],
           email: res.data.email || '',
+          phone: res.data.phone || '',
           googleScholarUrl: res.data.googleScholarUrl || '',
           orcid: res.data.orcid || '',
           researchGateUrl: res.data.researchGateUrl || '',
@@ -500,6 +503,28 @@ export default function AdminProfilePage() {
                   type="email"
                   placeholder="scholar@niser.ac.in"
                   value={formData.email}
+                  onChange={handleChange}
+                  className="w-full pl-10 pr-3.5 py-2.5 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                />
+              </div>
+            </div>
+
+            {/* Mobile Number */}
+            <div>
+              <label
+                htmlFor="phone"
+                className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5"
+              >
+                Mobile Number
+              </label>
+              <div className="relative">
+                <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="+91 XXXXX XXXXX"
+                  value={formData.phone}
                   onChange={handleChange}
                   className="w-full pl-10 pr-3.5 py-2.5 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                 />

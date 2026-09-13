@@ -12,6 +12,7 @@ export default function Navbar({ profile, loading = false }) {
     { name: 'About', path: '/about' },
     { name: 'Research', path: '/research' },
     { name: 'Publications', path: '/publications' },
+    { name: 'Expertise', path: '/expertise' },
     { name: 'Talks & Conferences', path: '/talks' },
     { name: 'Awards', path: '/awards' },
     { name: 'Experience', path: '/experience' },

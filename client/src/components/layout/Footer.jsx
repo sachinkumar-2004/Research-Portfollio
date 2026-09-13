@@ -52,6 +52,11 @@ export default function Footer({ profile, loading = false }) {
                 </Link>
               </li>
               <li>
+                <Link to="/expertise" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  Expertise & Tools
+                </Link>
+              </li>
+              <li>
                 <Link to="/talks" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   Talks & Conferences
                 </Link>

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import SectionHeading from '../components/common/SectionHeading';
 import SocialLinks from '../components/common/SocialLinks';
-import { Mail, Building, MapPin, Globe, GraduationCap } from 'lucide-react';
+import { Mail, Building, MapPin, Globe, GraduationCap, Phone } from 'lucide-react';
 import { LinkedinIcon, ResearchGateIcon, OrcidIcon } from '../components/common/Icons';
 
 export default function ContactPage() {
@@ -15,6 +15,7 @@ export default function ContactPage() {
   }, [profile]);
 
   const email = profile?.email;
+  const phone = profile?.phone;
   const institution = profile?.institution || '';
   const department = profile?.department || '';
   const location = profile?.location || '';
@@ -83,6 +84,26 @@ export default function ContactPage() {
                   )}
                 </div>
               </div>
+
+              {/* Mobile Phone (only when configured) */}
+              {phone && (
+                <div className="flex items-start gap-3.5">
+                  <div className="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200/50 dark:border-emerald-900/40 shrink-0">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+                      Mobile
+                    </span>
+                    <a
+                      href={`tel:${phone.replace(/\s+/g, '')}`}
+                      className="text-sm sm:text-base font-medium text-blue-700 dark:text-blue-400 hover:underline"
+                    >
+                      {phone}
+                    </a>
+                  </div>
+                </div>
+              )}
 
               {/* Institution */}
               {(institution || department) && (

@@ -55,6 +55,32 @@ export const portfolioService = {
     return res.data;
   },
 
+  // Expertise & Instrumentation
+  getExpertise: async () => {
+    const res = await api.get('/expertise');
+    return res.data;
+  },
+  getExpertiseById: async (id) => {
+    const res = await api.get(`/expertise/${id}`);
+    return res.data;
+  },
+  createExpertise: async (data) => {
+    const res = await api.post('/expertise', data);
+    return res.data;
+  },
+  updateExpertise: async (id, data) => {
+    const res = await api.put(`/expertise/${id}`, data);
+    return res.data;
+  },
+  deleteExpertise: async (id) => {
+    const res = await api.delete(`/expertise/${id}`);
+    return res.data;
+  },
+  reorderExpertise: async (orderedIds) => {
+    const res = await api.put('/expertise/reorder', { orderedIds });
+    return res.data;
+  },
+
   // Talks
   getTalks: async () => {
     const res = await api.get('/talks');
