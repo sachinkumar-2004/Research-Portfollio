@@ -2,7 +2,11 @@ import React from 'react';
 import { Cpu, Star, Sparkles, Wrench } from 'lucide-react';
 
 export default function ExpertiseCard({ item }) {
+  const [imageError, setImageError] = React.useState(false);
+
   if (!item) return null;
+
+  const hasImage = Boolean(item.imageUrl && !imageError);
 
   return (
     <div
@@ -12,19 +16,21 @@ export default function ExpertiseCard({ item }) {
           : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
       }`}
     >
-      {item.imageUrl && (
-        <div className="h-48 sm:h-52 w-full overflow-hidden bg-slate-100 dark:bg-slate-800 border-b border-slate-100 dark:border-slate-800 shrink-0">
+      <div className="h-48 sm:h-52 w-full overflow-hidden bg-slate-50 dark:bg-slate-800/40 border-b border-slate-100 dark:border-slate-800 shrink-0 flex items-center justify-center">
+        {hasImage ? (
           <img
             src={item.imageUrl}
             alt={item.title}
             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
             loading="lazy"
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
-            }}
+            onError={() => setImageError(true)}
           />
-        </div>
-      )}
+        ) : (
+          <div className="flex items-center justify-center w-full h-full text-slate-300 dark:text-slate-600/80 bg-slate-100/60 dark:bg-slate-800/30">
+            <Cpu className="w-10 h-10 stroke-[1.25]" />
+          </div>
+        )}
+      </div>
 
       <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
         <div>

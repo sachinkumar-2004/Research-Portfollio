@@ -102,7 +102,7 @@ export default function Footer({ profile, loading = false }) {
         <div className="mt-12 pt-6 border-t border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-slate-400 gap-3">
           <div className="text-center sm:text-left space-y-1">
             <p>© {currentYear} {name || 'Academic Portfolio'}. All rights reserved.</p>
-            <p className="text-[11px] text-slate-400 dark:text-slate-500">
+            <p className="text-xs text-slate-400 dark:text-slate-500">
               Crafted with ❤️ by Sachin Kumar Mahanta.
             </p>
           </div>

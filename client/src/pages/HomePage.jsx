@@ -91,7 +91,7 @@ export default function HomePage() {
             actionHref="/about"
           />
           <div className="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 leading-relaxed text-sm sm:text-base text-slate-700 dark:text-slate-300">
-            <p className="line-clamp-4">{profile.biography}</p>
+            <p className="line-clamp-4 max-w-3xl">{profile.biography}</p>
           </div>
         </section>
       )}

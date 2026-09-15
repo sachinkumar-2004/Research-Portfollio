@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function SectionHeading({
   title,
@@ -12,12 +13,14 @@ export default function SectionHeading({
   return (
     <div
       className={`mb-8 ${
-        centered ? 'text-center' : 'flex flex-col sm:flex-row sm:items-end sm:justify-between'
+        centered
+          ? 'text-center'
+          : 'flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4'
       } ${className}`}
     >
       <div>
         {badge && (
-          <span className="inline-block px-2.5 py-1 mb-2 text-xs font-medium tracking-wide uppercase rounded-full bg-slate-200/70 text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+          <span className="inline-block px-2.5 py-1 mb-2 text-xs font-medium tracking-wide rounded-full bg-slate-200/70 text-slate-700 dark:bg-slate-800 dark:text-slate-300">
             {badge}
           </span>
         )}
@@ -31,14 +34,24 @@ export default function SectionHeading({
         )}
       </div>
       {actionText && actionHref && (
-        <div className="mt-3 sm:mt-0">
-          <a
-            href={actionHref}
-            className="inline-flex items-center text-sm font-medium text-blue-700 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
-          >
-            {actionText}
-            <span className="ml-1">→</span>
-          </a>
+        <div className="shrink-0 mt-1 sm:mt-0">
+          {actionHref.startsWith('/') ? (
+            <Link
+              to={actionHref}
+              className="inline-flex items-center text-sm font-medium text-blue-700 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
+            >
+              {actionText}
+              <span className="ml-1">→</span>
+            </Link>
+          ) : (
+            <a
+              href={actionHref}
+              className="inline-flex items-center text-sm font-medium text-blue-700 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
+            >
+              {actionText}
+              <span className="ml-1">→</span>
+            </a>
+          )}
         </div>
       )}
     </div>
