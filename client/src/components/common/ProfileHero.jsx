@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpen, FileDown, UserCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, BookOpen, UserCheck, Sparkles } from 'lucide-react';
 import SocialLinks from './SocialLinks';
 
 export default function ProfileHero({ profile, loading = false }) {
@@ -100,26 +100,6 @@ export default function ProfileHero({ profile, loading = false }) {
               <BookOpen className="w-4 h-4" />
               <span>View Publications</span>
             </Link>
-
-            {profile?.cvUrl ? (
-              <a
-                href={profile.cvUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 text-xs sm:text-sm font-medium transition-colors"
-              >
-                <FileDown className="w-4 h-4" />
-                <span>Curriculum Vitae</span>
-              </a>
-            ) : (
-              <Link
-                to="/cv"
-                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 text-xs sm:text-sm font-medium transition-colors"
-              >
-                <FileDown className="w-4 h-4" />
-                <span>CV Overview</span>
-              </Link>
-            )}
           </div>
 
           {/* Academic Profiles & Social Links */}
